@@ -3,5 +3,4 @@
 using BenchmarkDotNet.Running;
 using StringCompare;
 
-var obj = new StringCompareBenchMark();
 var summary = BenchmarkRunner.Run<StringCompareBenchMark>();
