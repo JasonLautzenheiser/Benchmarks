@@ -11,4 +11,10 @@
       <PackageReference Include="BenchmarkDotNet" Version="0.13.1" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Compile Update="DateAdd\Program.cs">
+        <Link>ConsoleApp1\Program.cs</Link>
+      </Compile>
+    </ItemGroup>
+
 </Project>
