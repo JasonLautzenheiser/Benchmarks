@@ -8,7 +8,7 @@ public class StringCompareBenchMark
     const string baseString = "jason";
     private const string upperString = "JASON";
 
-    [Benchmark]
+    [Benchmark(Baseline = true)]
     public bool CompareStrings_ToUpper()
     {
         return baseString.ToUpper() == upperString;
@@ -23,8 +23,7 @@ public class StringCompareBenchMark
         String.Equals(baseString, upperString, StringComparison.OrdinalIgnoreCase);
 
     [Benchmark]
-    public int CompareStrings_StringCompare_IgnoreCase() =>
-        String.Compare(baseString, upperString, comparisonType: StringComparison.OrdinalIgnoreCase);
+    public bool CompareStrings_StringCompare_IgnoreCase() =>
+        String.Compare(baseString, upperString, comparisonType: StringComparison.OrdinalIgnoreCase) == 0;
 
-    
 }
