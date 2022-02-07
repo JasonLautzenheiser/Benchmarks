@@ -25,5 +25,13 @@ public class StringCompareBenchMark
     [Benchmark]
     public bool CompareStrings_StringCompare_IgnoreCase() =>
         String.Compare(baseString, upperString, comparisonType: StringComparison.OrdinalIgnoreCase) == 0;
+        
+    [Benchmark]
+    public bool CompareStrings_StringComparer_InvariantCultureIgnoreCase() =>
+        StringComparer.InvariantCultureIgnoreCase.Compare(baseString, upperString) == 0;
+ 
+    [Benchmark]
+    public bool CompareStrings_StringComparer_OrdinalIgnoreCase() =>
+        StringComparer.OrdinalIgnoreCase.Compare(baseString, upperString) == 0;
 
 }
