@@ -1,7 +1,8 @@
 ﻿using BenchmarkDotNet.Running;
 using StringCompare;
 
-var summary = BenchmarkRunner.Run<StringCompareBenchMark>();
+// var summary = BenchmarkRunner.Run<StringCompareBenchMark>();
+var summary = BenchmarkRunner.Run<StringLastIndexOfComparisonBenchMark>();
 
 // var xx = new StringCompareBenchMark();
 // Console.WriteLine(xx.CompareStrings_ToUpper());
