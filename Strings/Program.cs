@@ -5,9 +5,8 @@ class Program
 {
     public static  void Main()
     {
-        var summary = BenchmarkRunner.Run<StringFormatBenchmarks>();
+        // var summary = BenchmarkRunner.Run<StringFormatBenchmarks>();
+        var summary = BenchmarkRunner.Run<StringBoxing>();
 
-// var logger = new LoggingBenchmarks();
-// logger.BaseLogging();
     }
 }
