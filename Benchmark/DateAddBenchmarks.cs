@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace DateAdd;
+namespace Benchmark;
 
 [MemoryDiagnoser]
 public class DateAddBenchmarks

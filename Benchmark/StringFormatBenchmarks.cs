@@ -1,9 +1,8 @@
-﻿using System.Runtime.InteropServices;
-using System.Text;
+﻿using System.Text;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 
-namespace Strings
+namespace Benchmark
 {
     [MemoryDiagnoser]
     [SimpleJob(RuntimeMoniker.Net461)]

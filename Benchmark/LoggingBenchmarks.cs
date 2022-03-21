@@ -1,8 +1,9 @@
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Jobs;
 using Serilog;
-using Serilog.Core;
 using Serilog.Events;
+
+namespace Benchmark;
 
 [MemoryDiagnoser]
 [SimpleJob(RuntimeMoniker.Net461)]

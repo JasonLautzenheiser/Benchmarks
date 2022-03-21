@@ -1,7 +1,6 @@
-﻿using System;
-using BenchmarkDotNet.Attributes;
+﻿using BenchmarkDotNet.Attributes;
 
-namespace Strings
+namespace Benchmark
 {
     [MemoryDiagnoser]
     public class StringBoxing

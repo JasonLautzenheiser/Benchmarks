@@ -1,6 +1,6 @@
 ﻿using BenchmarkDotNet.Attributes;
 
-namespace LinqBenchmarks;
+namespace Benchmark;
 
 [MemoryDiagnoser]
 public class AnyBenchmarks
