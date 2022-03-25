@@ -6,7 +6,6 @@ using Serilog.Events;
 namespace Benchmark;
 
 [MemoryDiagnoser]
-[SimpleJob(RuntimeMoniker.Net461)]
 [SimpleJob(RuntimeMoniker.Net60)]
 public class LoggingBenchmarks
 {
