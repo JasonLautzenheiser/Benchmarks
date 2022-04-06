@@ -5,19 +5,20 @@ namespace Benchmark;
 [MemoryDiagnoser]
 public class AnyBenchmarks
 {
-    [Params(0,10,1000)]
+    [Params(10,100,1000)]
     public static int listCount;
-    private List<string> list = new List<string>(listCount);
 
+    private List<int> list = Enumerable.Range(0, listCount).ToList();
+    
     [Benchmark]
     public bool CheckListWithAny()
     {
-        return list.Any();
+        return list.Any(x=>x == listCount/2);
     }    
     
     [Benchmark]
     public bool CheckListWithCount()
     {
-        return list.Count > 0;
+        return list.Count(x=>x == listCount/2) > 0;
     }
 }
