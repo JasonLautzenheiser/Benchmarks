@@ -5,8 +5,8 @@ using BenchmarkDotNet.Jobs;
 namespace Benchmark
 {
     [MemoryDiagnoser]
-    [SimpleJob(RuntimeMoniker.Net461)]
     [SimpleJob(RuntimeMoniker.Net60)]
+    [SimpleJob(RuntimeMoniker.Net70)]
     public class StringFormatBenchmarks
     {
         private string firstname = "jason";

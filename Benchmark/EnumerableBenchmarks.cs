@@ -5,6 +5,7 @@ namespace Benchmark;
 
 [MemoryDiagnoser]
 [SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 public class EnumerableBenchmarks
 {
 
@@ -40,8 +41,71 @@ public class EnumerableBenchmarks
 
 }
 
+[MemoryDiagnoser]
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
+public class EnumerableDuplicatesBenchmarks
+{
+  [Benchmark]
+  [ArgumentsSource(nameof(Data))]
+  public void Duplicates_AddHashsetCheck_Foreach(int[] array)
+  {
+    ContainsDuplicates1<int>(array);
+  }  
+  
+  [Benchmark]
+  [ArgumentsSource(nameof(Data))]
+  public void Duplicates_AddHashsetCheck_Linq(int[] array)
+  {
+    ContainsDuplicates2<int>(array);
+  }
+  
+  [Benchmark]
+  [ArgumentsSource(nameof(Data))]
+  public void Duplicates_AddHashsetCheck_enumerable_all(int[] array)
+  {
+    var hs = new HashSet<int>();
+    array.All(hs.Add);
+  }
+
+  private static bool ContainsDuplicates1<T>(IEnumerable<T> enumerable)
+  {
+    HashSet<T> knownElements = new();
+    foreach (T element in enumerable)
+    {
+      if (!knownElements.Add(element)) return true;
+    }
+
+    return false;
+  }  
+  
+  private static bool ContainsDuplicates2<T>(IEnumerable<T> enumerable)
+  {
+    HashSet<T> knownElements = new();
+    return enumerable.Any(element => !knownElements.Add(element));
+  }
+  
+  public IEnumerable<int[]> Data()
+  {
+    // yield return new int[] { 1, 2, 2, 3 };
+    
+    var array = Enumerable.Range(0, 1000).ToArray();
+    // array[500] = 1;
+    yield return array;
+
+    // var array2 = Enumerable.Range(0, 1000).ToArray();
+    // array[3] = 1;
+    //
+    // yield return array;
+  }
+  
+}
+
 public static class EnumerableExtensions
 {
+  
+
+  
   public static bool IsNullOrEmpty1<ItemType>(this IEnumerable<ItemType>? enumerable,
     Func<ItemType, bool>? predicate = null)
   {

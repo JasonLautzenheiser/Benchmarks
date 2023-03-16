@@ -1,8 +1,11 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
 namespace Benchmark;
 
 [MemoryDiagnoser]
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 public class DateAddBenchmarks
 {
     private DateTime endDate;

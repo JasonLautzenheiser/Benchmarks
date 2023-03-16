@@ -7,9 +7,12 @@ namespace Benchmark;
 
 [MemoryDiagnoser]
 [SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 public class LoggingBenchmarks
 {
-    
+  string firstName = "Jason";  
+  
+  
     [GlobalSetup]
     public void Setup()
     {
@@ -20,7 +23,6 @@ public class LoggingBenchmarks
     [Benchmark]
     public void BaseLogging()
     {
-
         Log.Verbose("No one listens to me!");
     }
 
@@ -30,5 +32,17 @@ public class LoggingBenchmarks
         if (Log.IsEnabled(LogEventLevel.Verbose))
             Log.Verbose("No one listens to me!");
         
+    }
+
+    [Benchmark]
+    public void MessageCompileTypeConstant()
+    {
+      Log.Verbose("This is a test {firstName}", firstName);
+    }
+
+    [Benchmark]
+    public void MessageInterpolation()
+    {
+      Log.Verbose($"This is a test {firstName}");
     }
 }

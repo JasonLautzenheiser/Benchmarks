@@ -7,6 +7,7 @@ namespace Benchmark;
 
 [MemoryDiagnoser]
 [SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 public class LoggingEventIdBenchmarks
 {
 

@@ -10,6 +10,7 @@ namespace Benchmark
     [MemoryDiagnoser]
     [GroupBenchmarksBy(BenchmarkLogicalGroupRule.ByCategory)]
     [SimpleJob(RuntimeMoniker.Net60)]
+    [SimpleJob(RuntimeMoniker.Net70)]
     public class EnumBenchmarks
     {
         [Params("Support", "Data Entry", "Implementation", "NotFound")]

@@ -7,8 +7,8 @@ using NI.Tools.Ranges;
 namespace Benchmark;
 
 [MemoryDiagnoser]
-[SimpleJob(runtimeMoniker: RuntimeMoniker.Net50)]
-[SimpleJob(runtimeMoniker: RuntimeMoniker.Net462)]
+[SimpleJob(RuntimeMoniker.Net60)]
+[SimpleJob(RuntimeMoniker.Net70)]
 public class RangeBenchMarks
 {
 #if NET6_0_OR_GREATER
